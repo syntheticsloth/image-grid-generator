@@ -54,7 +54,7 @@ const buttonHeight = 40;
 const buttonHorizontalInterval = 16;
 
 export const generateButtonSize: RectangleSize = {
-  width: 120,
+  width: 100,
   height: buttonHeight,
 };
 
@@ -67,7 +67,7 @@ export const randomButtonPosition: Position = {
 };
 
 export const randomButtonSize: RectangleSize = {
-  width: 120,
+  width: 100,
   height: buttonHeight,
 };
 
@@ -80,7 +80,7 @@ export const saveButtonPosition: Position = {
 };
 
 export const saveButtonSize: RectangleSize = {
-  width: 120,
+  width: 100,
   height: buttonHeight,
 };
 
@@ -93,7 +93,7 @@ export const saveButtonSize: RectangleSize = {
 // };
 //
 // export const resetButtonSize: RectangleSize = {
-//   width: 120,
+//   width: 100,
 //   height: buttonHeight,
 // };
 
