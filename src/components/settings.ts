@@ -58,7 +58,7 @@ export const generateButtonSize: RectangleSize = {
   height: buttonHeight,
 };
 
-export const saveButtonPosition: Position = {
+export const randomButtonPosition: Position = {
   x:
     generateButtonPosition.x +
     buttonHorizontalInterval +
@@ -66,10 +66,36 @@ export const saveButtonPosition: Position = {
   y: generateButtonPosition.y,
 };
 
+export const randomButtonSize: RectangleSize = {
+  width: 120,
+  height: buttonHeight,
+};
+
+export const saveButtonPosition: Position = {
+  x:
+    randomButtonPosition.x +
+    buttonHorizontalInterval +
+    randomButtonSize.width,
+  y: generateButtonPosition.y,
+};
+
 export const saveButtonSize: RectangleSize = {
   width: 120,
   height: buttonHeight,
 };
+
+// export const resetButtonPosition: Position = {
+//   x:
+//     saveButtonPosition.x +
+//     buttonHorizontalInterval +
+//     saveButtonSize.width,
+//   y: generateButtonPosition.y,
+// };
+//
+// export const resetButtonSize: RectangleSize = {
+//   width: 120,
+//   height: buttonHeight,
+// };
 
 // -- parameter area ----
 

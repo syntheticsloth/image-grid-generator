@@ -16,7 +16,9 @@ let imageGridGraphics: p5.Graphics | undefined = undefined;
 
 let parameterArea: ParameterArea.Unit;
 let generateButton: p5.Element;
+let randomButton: p5.Element;
 let saveButton: p5.Element;
+// let resetButton: p5.Element;
 
 let processing = false;
 let drawGeneratedGrid = () => {
@@ -36,7 +38,9 @@ const startProcessing = () => {
   p.cursor(p.WAIT);
 
   generateButton.style("cursor", "wait");
+  randomButton.style("cursor", "wait");
   saveButton.style("cursor", "wait");
+  // resetButton.style("cursor", "wait");
 };
 
 const endProcessing = () => {
@@ -44,7 +48,9 @@ const endProcessing = () => {
   p.cursor(p.ARROW);
 
   generateButton.style("cursor", "pointer");
+  randomButton.style("cursor", "pointer");
   saveButton.style("cursor", "pointer");
+  // resetButton.style("cursor", "pointer");
 };
 
 const completeGenerate = (parameters: Parameters.Unit) => (
@@ -74,6 +80,27 @@ const completeGenerate = (parameters: Parameters.Unit) => (
 };
 
 const startGenerate = () => {
+  if (processing) return;
+
+  const { parameters } = parameterArea;
+  const cellCount = parameters.rows * parameters.columns;
+  if (cellCount < 1) return;
+
+  //const files: p5.File[] = p.shuffle(imageFiles).slice(0, cellCount);
+  const files: p5.File[] = imageFiles;
+  if (files.length <= 0) return;
+
+  startProcessing();
+
+  ImgElement.createList(files, {
+    hide: true,
+    warnOnFail: true,
+    onSuccess: completeGenerate(parameters),
+    onEnd: endProcessing,
+  });
+};
+
+const randomGenerate = () => {
   if (processing) return;
 
   const { parameters } = parameterArea;
@@ -131,6 +158,14 @@ const setupButtons = () => {
     cursor: "pointer",
   });
 
+  randomButton = Button.create({
+    label: "random",
+    onClick: randomGenerate,
+    position: Settings.randomButtonPosition,
+    size: Settings.randomButtonSize,
+    cursor: "pointer",
+  });
+
   saveButton = Button.create({
     label: "save",
     onClick: saveResult,
@@ -138,6 +173,14 @@ const setupButtons = () => {
     size: Settings.saveButtonSize,
     cursor: "pointer",
   });
+
+  // resetButton = Button.create({
+  //   label: "reset",
+  //   onClick: saveResult,
+  //   position: Settings.resetButtonPosition,
+  //   size: Settings.resetButtonSize,
+  //   cursor: "pointer",
+  // });
 };
 
 const setupParameterArea = () => {

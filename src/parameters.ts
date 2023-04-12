@@ -28,8 +28,8 @@ export type Unit = {
 
 export const defaultValues: Unit = {
   fileName: "image-grid.png",
-  width: 800,
-  height: 800,
+  width: 1080,
+  height: 1080,
   columns: 2,
   rows: 2,
   outerMargin: {
